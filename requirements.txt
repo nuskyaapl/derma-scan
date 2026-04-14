@@ -1,6 +1,6 @@
 flask
 flask-cors
-tensorflow
+tensorflow==2.20.0
 pillow
 opencv-python
 reportlab
