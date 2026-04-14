@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dermascan AI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fb;
+      color: #222;
+      display: flex;         
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 36px;
+      color: #111827;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      color: #6b7280;
+      font-size: 16px;
+    }
+
+    .main-card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 28px;
+    }
+
+    .top-section {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .upload-panel {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .preview-panel {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 14px;
+      color: #111827;
+    }
+
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 20px;
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 12px;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      margin-bottom: 6px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: #111827;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1f2937;
+    }
+
+    .btn-secondary {
+      background: #0f766e;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #115e59;
+    }
+
+    .preview {
+      width: 100%;
+      height: 320px;
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+
+    .preview img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .muted {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .status {
+      margin-top: 22px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .ok {
+      background: #ecfdf5;
+      border: 1px solid #86efac;
+      color: #166534;
+    }
+
+    .bad {
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }
+
+    .result-section {
+      margin-top: 28px;
+      display: none;
+    }
+
+    .result-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .result-card,
+    .heatmap-card {
+      flex: 1;
+      min-width: 280px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .result-card h3,
+    .heatmap-card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+
+    .result-item {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .prediction-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 13px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .badge-benign {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-malignant {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-unsupported {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .heatmap-card img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .download-area {
+      margin-top: 16px;
+    }
+
+    #downloadReportBtn {
+      display: none;
+      text-decoration: none;
+    }
+
+    .disclaimer {
+      margin-top: 25px;
+      padding: 14px 16px;
+      border-left: 5px solid #f59e0b;
+      background: #fffbeb;
+      border-radius: 10px;
+      color: #92400e;
+      font-size: 14px;
+    }
+
+    .navbar {
+      background: #f1f5f9;              /* same tone as footer */
+      padding: 14px 20px;
+
+      display: flex;
+      justify-content: center;          /* 🔥 center horizontally */
+      align-items: center;
+      gap: 30px;                        /* spacing between items */
+
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .navbar a {
+      color: #64748b;                   /* same as footer text */
+      text-decoration: none;
+      font-size: 13px;                  /* same as footer */
+      font-weight: normal;              /* match footer style */
+
+      transition: 0.3s ease;            /* smooth hover */
+    }
+
+    .navbar a:hover {
+      color: #111827;                   /* 🔥 hover color change */
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 15px;
+      color: #64748b;
+      font-size: 13px;
+      background: #f1f5f9;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .preview img {
+        height: 260px;
+      }
+
+      .preview {
+        height: 260px;
+      }
+
+      .upload-box {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>DermaScan AI</h1>
+      <p>AI-Powered Skin Lesion Analysis and Skin Cancer Detection System</p>
+    </div>
+
+    <div class="main-card">
+      <div class="top-section">
+        <div class="upload-panel">
+          <div class="section-title">Upload Skin Lesion Image</div>
+          <div class="upload-box">
+            <input type="file" id="fileInput" accept="image/*" capture="environment" />
+
+            <div class="button-row">
+              <button class="btn-primary" id="predictBtn" disabled>Predict</button>
+            </div>
+
+            <p class="muted">Supported formats: JPG, JPEG, PNG</p>
+            <p class="muted">Upload a clear skin lesion image to get prediction, confidence score, heatmap, and PDF report.</p>
+          </div>
+        </div>
+
+        <div class="preview-panel">
+          <div class="section-title">Uploaded Image Preview</div>
+          <div class="preview" id="previewBox">
+            <span class="muted">Image preview will appear here</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="statusBox" class="status"></div>
+
+      <div id="resultSection" class="result-section">
+        <div class="result-grid">
+          <div class="result-card">
+            <h3>Prediction Result</h3>
+
+            <div class="result-item">
+              <strong>Prediction:</strong>
+              <span id="predictionBadge"></span>
+            </div>
+
+            <div class="result-item">
+              <strong>Confidence:</strong>
+              <span id="confidenceText">-</span>
+            </div>
+
+            <div class="result-item">
+              <strong>Lesion Validation Score:</strong>
+              <span id="lesionScoreText">-</span>
+            </div>
+            <div class="download-area">
+              <a id="downloadReportBtn" href="#" download>
+                <button type="button" class="btn-secondary">Download Detailed Report</button>
+              </a>
+            </div>
+
+            <div class="result-item" id="noteText" style="display:none;"></div>
+
+            <div class="download-area">
+              <span class="muted">A detailed PDF report available for download.</span>
+            </div>
+          </div>
+
+          <div class="heatmap-card">
+            <h3>Grad-CAM Heatmap</h3>
+            <div id="heatmapContainer">
+              <span class="muted">Heatmap will appear here after prediction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Dermascan AI is a decision-support prototype developed for research and educational purposes. It must not be used as a substitute for professional medical diagnosis.
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <a href="/about">About</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/disclaimer">Disclaimer</a>
+      <a href="/feedback">Report an Error / Suggestion</a>
+    </nav>
+
+    <div class="footer-note">
+      © 2026 Dermascan AI • Built for Academic Research
+    </div>
+  </div>
+
+  <script>
+  const fileInput = document.getElementById("fileInput");
+  const predictBtn = document.getElementById("predictBtn");
+  const previewBox = document.getElementById("previewBox");
+  const statusBox = document.getElementById("statusBox");
+  const downloadReportBtn = document.getElementById("downloadReportBtn");
+
+  const resultSection = document.getElementById("resultSection");
+  const predictionBadge = document.getElementById("predictionBadge");
+  const confidenceText = document.getElementById("confidenceText");
+  const lesionScoreText = document.getElementById("lesionScoreText");
+  const noteText = document.getElementById("noteText");
+  const heatmapContainer = document.getElementById("heatmapContainer");
+
+  let selectedFile = null;
+
+  function showStatus(message, type) {
+    statusBox.style.display = "block";
+    statusBox.className = "status " + (type === "ok" ? "ok" : "bad");
+    statusBox.textContent = message;
+  }
+
+  function clearStatus() {
+    statusBox.style.display = "none";
+    statusBox.textContent = "";
+  }
+
+  function resetResults() {
+    resultSection.style.display = "none";
+    confidenceText.textContent = "-";
+    lesionScoreText.textContent = "-";
+    predictionBadge.innerHTML = "";
+    noteText.style.display = "none";
+    noteText.textContent = "";
+    heatmapContainer.innerHTML = `<span class="muted">Heatmap will appear here after prediction</span>`;
+    downloadReportBtn.style.display = "none";
+  }
+
+  function setPredictionBadge(prediction) {
+    let badgeClass = "badge-unsupported";
+
+    if (prediction.toLowerCase().includes("benign")) {
+      badgeClass = "badge-benign";
+    } else if (prediction.toLowerCase().includes("malignant")) {
+      badgeClass = "badge-malignant";
+    }
+
+    predictionBadge.innerHTML = `
+      <span class="prediction-badge ${badgeClass}">
+        ${prediction}
+      </span>
+    `;
+  }
+
+  fileInput.addEventListener("change", (e) => {
+    clearStatus();
+    resetResults();
+
+    const file = e.target.files[0];
+    selectedFile = file || null;
+
+    if (!selectedFile) {
+      predictBtn.disabled = true;
+      previewBox.innerHTML = `<span class="muted">Image preview will appear here</span>`;
+      return;
+    }
+
+    if (!selectedFile.type.startsWith("image/")) {
+      showStatus("Please upload a valid image file.", "bad");
+      predictBtn.disabled = true;
+      previewBox.innerHTML = `<span class="muted">Image preview will appear here</span>`;
+      return;
+    }
+
+    predictBtn.disabled = false;
+
+    const imgURL = URL.createObjectURL(selectedFile);
+    previewBox.innerHTML = `<img src="${imgURL}" alt="preview" />`;
+  });
+
+  predictBtn.addEventListener("click", async () => {
+    if (!selectedFile) return;
+
+    clearStatus();
+    resetResults();
+    showStatus("Predicting... please wait.", "ok");
+    predictBtn.disabled = true;
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const res = await fetch("/predict", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        showStatus("Error: " + data.error, "bad");
+        return;
+      }
+
+      // ✅ If unsupported image, do NOT show result section
+      if (
+        data.prediction &&
+        data.prediction.toLowerCase().includes("unsupported")
+      ) {
+        resultSection.style.display = "none";
+        downloadReportBtn.style.display = "none";
+        showStatus("It’s an unsupported image. Please upload a clear skin lesion image.", "bad");
+        return;
+      }
+
+      // ✅ Normal valid prediction flow
+      showStatus("Prediction completed successfully.", "ok");
+      resultSection.style.display = "block";
+
+      setPredictionBadge(data.prediction || "Unknown");
+      confidenceText.textContent = data.confidence !== undefined ? `${data.confidence}%` : "-";
+      lesionScoreText.textContent = data.lesion_score !== undefined ? `${data.lesion_score}%` : "-";
+
+      if (data.note) {
+        noteText.style.display = "block";
+        noteText.innerHTML = `<strong>Note:</strong> ${data.note}`;
+      }
+
+      if (data.heatmap) {
+        heatmapContainer.innerHTML = `<img src="${data.heatmap}?t=${Date.now()}" alt="heatmap" />`;
+      } else {
+        heatmapContainer.innerHTML = `<span class="muted">No heatmap available</span>`;
+      }
+
+      if (data.report) {
+        downloadReportBtn.href = data.report + "?t=" + Date.now();
+        downloadReportBtn.style.display = "inline-block";
+      } else {
+        downloadReportBtn.style.display = "none";
+      }
+
+    } catch (err) {
+      showStatus("Server error. Please try again.", "bad");
+    } finally {
+      predictBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
