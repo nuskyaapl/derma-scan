@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dermascan AI</title>
+  <title>Dermascan</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -65,29 +66,25 @@
     }
 
     .navbar {
-      background: #f1f5f9;              /* same tone as footer */
+      background: #f1f5f9;              
       padding: 14px 20px;
-
       display: flex;
-      justify-content: center;          /* 🔥 center horizontally */
+      justify-content: center;
       align-items: center;
-      gap: 30px;                        /* spacing between items */
-
+      gap: 30px;                        
       flex-wrap: wrap;
       text-align: center;
     }
 
     .navbar a {
-      color: #64748b;                   /* same as footer text */
+      color: #64748b;                   
       text-decoration: none;
-      font-size: 13px;                  /* same as footer */
-      font-weight: normal;              /* match footer style */
-
-      transition: 0.3s ease;            /* smooth hover */
+      font-size: 13px;
+      transition: 0.3s ease;
     }
 
     .navbar a:hover {
-      color: #111827;                   /* 🔥 hover color change */
+      color: #111827;
     }
 
     .footer-note {
@@ -98,12 +95,13 @@
       background: #f1f5f9;
     }
 
+    /* Mobile responsive adjustments */
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 28px;
       }
 
-      .main-card h2{
+      .main-card h2 {
         font-size: 22px;
       }
     }
@@ -113,20 +111,20 @@
 <body>
   <div class="container">
     <div class="hero">
-      <h1>DermaScan AI</h1>
+      <h1>DermaScan</h1>
       <p>AI-Powered Skin Lesion Analysis and Skin Cancer Detection System</p>
     </div>
-
     <div class="main-card">
       <h2>Report an Issue / Suggestion</h2>
-
       <p class="feedback-intro">
-      We value your feedback. If you encounter any issue while using <strong>Dermascan AI</strong>, or if you have suggestions for improvement, please use the form below.
+        We value your feedback. If you encounter any issue while using <strong>Dermascan AI</strong>, 
+        or if you have suggestions for improvement, please use the form below.
       </p>
-
       <div class="feedback-box">
+
+        <!-- Embedded Google Form -->
         <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSf4mxKi0y0SSx3RAo8ACP3r1-Rxtq1IIiAovn6KwYmxvsio6A/viewform?embedded=true?hl=en"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSf4mxKi0y0SSx3RAo8ACP3r1-Rxtq1IIiAovn6KwYmxvsio6A/viewform?embedded=true&hl=en"
           width="100%" 
           height="900" 
           frameborder="0" 
@@ -135,22 +133,25 @@
           style="border: none; border-radius: 12px; background: white;">
           Loading…
         </iframe>
+
       </div>
-
-    <nav class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact Us</a>
-        <a href="/disclaimer">Privacy Policy</a>
-        <a href="/feedback">Feedback</a>
-    </nav>
-
-    <div class="footer-note">
-      © 2026 Dermascan AI • Built for Academic Research
     </div>
+
   </div>
 
-  
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/disclaimer">Privacy Policy</a>
+    <a href="/feedback">Feedback</a>
+  </nav>
+
+  <!-- Footer -->
+  <div class="footer-note">
+    © 2026 Dermascan • Built for Academic Research
+  </div>
 
 </body>
 </html>

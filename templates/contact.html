@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dermascan AI</title>
+  <title>Dermascan</title>
   <style>
     * {
       box-sizing: border-box;
@@ -70,10 +70,12 @@
       color: #374151;
     }
 
+    /* Labels (Name, Email, etc.) */
     .contact-box strong {
       color: #111827;
     }
 
+    /* Links (email + portfolio) */
     .contact-box a {
       color: #0f766e;
       text-decoration: none;
@@ -85,31 +87,30 @@
     }
 
     .navbar {
-      background: #f1f5f9;              /* same tone as footer */
+      background: #f1f5f9;              
       padding: 14px 20px;
-
       display: flex;
-      justify-content: center;          /* 🔥 center horizontally */
+      justify-content: center;          
       align-items: center;
-      gap: 30px;                        /* spacing between items */
-
+      gap: 30px;                        
       flex-wrap: wrap;
       text-align: center;
     }
 
+    /* Navbar links */
     .navbar a {
-      color: #64748b;                   /* same as footer text */
+      color: #64748b;                   
       text-decoration: none;
-      font-size: 13px;                  /* same as footer */
-      font-weight: normal;              /* match footer style */
-
-      transition: 0.3s ease;            /* smooth hover */
+      font-size: 13px;                  
+      font-weight: normal;              
+      transition: 0.3s ease;            
     }
 
     .navbar a:hover {
-      color: #111827;                   /* 🔥 hover color change */
+      color: #111827;                   
     }
 
+    /* Footer */
     .footer-note {
       text-align: center;
       padding: 15px;
@@ -118,14 +119,15 @@
       background: #f1f5f9;
     }
 
+    /* Mobile responsiveness */
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 28px;
       }
-      .main-card h2{
+
+      .main-card h2 {
         font-size: 22px;
       }
-
     }
   </style>
 </head>
@@ -133,16 +135,15 @@
 <body>
   <div class="container">
     <div class="hero">
-      <h1>DermaScan AI</h1>
+      <h1>DermaScan</h1>
       <p>AI-Powered Skin Lesion Analysis and Skin Cancer Detection System</p>
     </div>
-
     <div class="main-card">
       <h2>Contact Us</h2>
 
       <p class="contact-intro">
-      If you have any questions, feedback, or academic inquiries regarding <strong>Dermascan AI</strong>, 
-      please feel free to contact using the details below.
+        If you have any questions, feedback, or academic inquiries regarding <strong>Dermascan AI</strong>, 
+        please feel free to contact using the details below.
       </p>
 
       <div class="contact-box">
@@ -167,21 +168,15 @@
 
     </div>
   </div>
-
-    <nav class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact Us</a>
-        <a href="/disclaimer">Privacy Policy</a>
-        <a href="/feedback">Feedback</a>
-    </nav>
-
-    <div class="footer-note">
-      © 2026 Dermascan AI • Built for Academic Research
-    </div>
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/disclaimer">Privacy Policy</a>
+    <a href="/feedback">Feedback</a>
+  </nav>
+  <div class="footer-note">
+    © 2026 Dermascan • Built for Academic Research
   </div>
-
-  
-
 </body>
 </html>
