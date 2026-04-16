@@ -50,20 +50,18 @@
       padding: 28px;
     }
 
-    
+    .feedback-intro {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
 
-    
-    
-
-   
-    .disclaimer {
-      margin-top: 25px;
-      padding: 14px 16px;
-      border-left: 5px solid #f59e0b;
-      background: #fffbeb;
-      border-radius: 10px;
-      color: #92400e;
-      font-size: 14px;
+    .feedback-box {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: inset 0 0 0 1px #e2e8f0;
     }
 
     .navbar {
@@ -105,16 +103,8 @@
         font-size: 28px;
       }
 
-      .preview img {
-        height: 260px;
-      }
-
-      .preview {
-        height: 260px;
-      }
-
-      .upload-box {
-        height: auto;
+      .main-card h2{
+        font-size: 22px;
       }
     }
   </style>
@@ -128,22 +118,31 @@
     </div>
 
     <div class="main-card">
-      
+      <h2>Report an Issue / Suggestion</h2>
 
-      
-     
+      <p class="feedback-intro">
+      We value your feedback. If you encounter any issue while using <strong>Dermascan AI</strong>, or if you have suggestions for improvement, please use the form below.
+      </p>
 
-      <div class="text">
-        <h3> Dermascan AI is a decision-support prototype developed for research and educational purposes. It must not be used as a substitute for professional medical diagnosis.</h3>
+      <div class="feedback-box">
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSf4mxKi0y0SSx3RAo8ACP3r1-Rxtq1IIiAovn6KwYmxvsio6A/viewform?embedded=true?hl=en"
+          width="100%" 
+          height="900" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0"
+          style="border: none; border-radius: 12px; background: white;">
+          Loading…
+        </iframe>
       </div>
-    </div>
 
     <nav class="navbar">
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/contact">Contact Us</a>
-        <a href="/disclaimer">Disclaimer</a>
-        <a href="/feedback">Report an Error / Suggestion</a>
+        <a href="/disclaimer">Privacy Policy</a>
+        <a href="/feedback">Feedback</a>
     </nav>
 
     <div class="footer-note">

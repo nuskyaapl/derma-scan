@@ -249,7 +249,7 @@
     }
 
     .disclaimer {
-      margin-top: 25px;
+      margin-bottom: 25px;
       padding: 14px 16px;
       border-left: 5px solid #f59e0b;
       background: #fffbeb;
@@ -320,15 +320,20 @@
     </div>
 
     <div class="main-card">
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Dermascan AI is a decision-support prototype developed for research and educational purposes. It must not be used as a substitute for professional medical diagnosis.
+      </div>
       <div class="top-section">
         <div class="upload-panel">
+          
           <div class="section-title">Upload Skin Lesion Image</div>
           <div class="upload-box">
-            <input type="file" id="fileInput" accept="image/*" capture="environment" />
+            <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,image/jpeg,image/png" />
 
             <div class="button-row">
               <button class="btn-primary" id="predictBtn" disabled>Predict</button>
             </div>
+
 
             <p class="muted">Supported formats: JPG, JPEG, PNG</p>
             <p class="muted">Upload a clear skin lesion image to get prediction, confidence score, heatmap, and PDF report.</p>
@@ -386,16 +391,14 @@
         </div>
       </div>
 
-      <div class="disclaimer">
-        <strong>Disclaimer:</strong> Dermascan AI is a decision-support prototype developed for research and educational purposes. It must not be used as a substitute for professional medical diagnosis.
-      </div>
+      
     </div>
 
     <nav class="navbar">
       <a href="/about">About</a>
       <a href="/contact">Contact Us</a>
-      <a href="/disclaimer">Disclaimer</a>
-      <a href="/feedback">Report an Error / Suggestion</a>
+      <a href="/disclaimer">Privacy Policy</a>
+      <a href="/feedback">Feedback</a>
     </nav>
 
     <div class="footer-note">

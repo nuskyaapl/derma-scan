@@ -50,21 +50,34 @@
       padding: 28px;
     }
 
-    
-
-    
-    
-
-   
-    .disclaimer {
-      margin-top: 25px;
-      padding: 14px 16px;
-      border-left: 5px solid #f59e0b;
-      background: #fffbeb;
-      border-radius: 10px;
-      color: #92400e;
-      font-size: 14px;
+    .main-card h2 {
+      text-align: center;
+      margin-bottom: 30px;
     }
+
+    .main-card h3 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .main-card p {
+      margin-top: 10px;
+      color: #6b7280;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .main-card a{
+      color: #64748b;                   /* same as footer text */
+      text-decoration: none;
+      font-weight: normal;              /* match footer style */
+      transition: 0.1s ease; 
+    }
+
+    .main-card a:hover {
+      color: #111827;                   /* 🔥 hover color change */
+    }
+   
 
     .navbar {
       background: #f1f5f9;              /* same tone as footer */
@@ -105,16 +118,8 @@
         font-size: 28px;
       }
 
-      .preview img {
-        height: 260px;
-      }
-
-      .preview {
-        height: 260px;
-      }
-
-      .upload-box {
-        height: auto;
+      .main-card h2{
+        font-size: 22px;
       }
     }
   </style>
@@ -128,22 +133,78 @@
     </div>
 
     <div class="main-card">
-      
+
+      <h2>About Dermascan AI</h2>
+
+      <p>
+      <strong>Dermascan AI</strong> is an intelligent skin lesion analysis system developed as a Final Year Project. 
+      The primary objective of this project is to assist in the early detection of skin cancer by using advanced 
+      Artificial Intelligence (AI) and Deep Learning techniques to classify skin lesion images as <strong>benign</strong> 
+      (non-cancerous) or <strong>malignant</strong> (cancerous).
+      </p>
+
+      <h3>Developer Information</h3>
+
+      <p>
+      <strong>Name:</strong><a href="https://nuskyaapl.github.io/portfolio/"> M.R.A. Nusky</a><br>
+      <strong>IIT ID:</strong> 20210555<br>
+      <strong>UoW ID:</strong> w1953852<br>
+      <strong>IIT Email:</strong> nusky.20210555@iit.ac.lk
+      </p>
+
+      <h3>Why This Project Was Developed</h3>
+
+      <p>
+      Skin cancer is one of the most common types of cancer worldwide, and early detection plays a crucial role in 
+      improving survival rates. However, access to dermatological expertise may be limited in many regions. 
+      This project was developed to explore how AI can support healthcare by providing a quick, accessible, and 
+      intelligent decision-support tool for preliminary skin lesion analysis.
+      </p>
+
+      <h3>How the System Was Developed</h3>
+
+      <p>
+      Dermascan AI was developed using a deep learning-based approach. A Convolutional Neural Network (CNN) model 
+      was trained using publicly available dermoscopic image datasets such as ISIC and HAM10000. 
+      Transfer learning techniques were applied using EfficientNet architecture to improve model performance and accuracy.
+      </p>
+
+      <p>
+      The system includes several key components:
+      </p>
+
+      <ul>
+        <li><strong>Image Classification Model:</strong> Predicts whether a skin lesion is benign or malignant.</li>
+        <li><strong>Gatekeeper Model:</strong> Validates whether the uploaded image is a valid skin lesion image.</li>
+        <li><strong>Grad-CAM Visualization:</strong> Generates heatmaps to highlight important regions influencing the prediction.</li>
+        <li><strong>Automated Report Generation:</strong> Produces a detailed PDF report including prediction results and recommendations.</li>
+      </ul>
+
+      <h3>System Purpose</h3>
+
+      <p>
+      The system is designed as a <strong>decision-support prototype</strong> and aims to demonstrate how AI can enhance 
+      medical image analysis. It improves transparency through Explainable AI techniques and provides user-friendly 
+      recommendations based on the prediction results.
+      </p>
 
       
-     
 
-      <div class="text">
-        <h3> Dermascan AI is a decision-support prototype developed for research and educational purposes. It must not be used as a substitute for professional medical diagnosis.</h3>
-      </div>
+      <h3>Important Note</h3>
+
+      <p>
+      Dermascan AI is developed strictly for <strong>research and educational purposes</strong>. It is not a certified 
+      medical system and should not be used as a substitute for professional medical diagnosis. Users are strongly 
+      encouraged to consult a qualified healthcare professional for medical advice.
+      </p>
     </div>
 
     <nav class="navbar">
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/contact">Contact Us</a>
-        <a href="/disclaimer">Disclaimer</a>
-        <a href="/feedback">Report an Error / Suggestion</a>
+        <a href="/disclaimer">Privacy Policy</a>
+        <a href="/feedback">Feedback</a>
     </nav>
 
     <div class="footer-note">
