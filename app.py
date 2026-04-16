@@ -5,7 +5,6 @@ from PIL import Image
 import cv2
 import os
 import uuid
-
 from tensorflow.keras.applications.efficientnet import preprocess_input
 from heatmap import make_gradcam_heatmap, overlay_heatmap, clear_old_heatmaps
 from report import generate_pdf_report, clear_old_reports
